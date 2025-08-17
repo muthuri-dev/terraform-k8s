@@ -7,12 +7,12 @@ variable "tf_region" {
 
 variable "tf_access_key" {
   type    = string
-  default = "AKIAVIOZFNMHP63Y6B47"
+  default = ""
 }
 
 variable "tf_secrete_key" {
   type    = string
-  default = "DaU9yCprRr6Ph1MxbGGx70qMNcTSo2p8UrwNdAvH"
+  default = ""
 }
 
 variable "tf_profile" {
