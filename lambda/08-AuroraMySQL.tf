@@ -12,4 +12,5 @@ resource "aws_rds_cluster" "lambda_aurora_mysql" {
   master_password         = "Invoice1234"
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
+  skip_final_snapshot = true
 }
