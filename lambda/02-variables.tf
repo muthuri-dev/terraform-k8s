@@ -7,7 +7,7 @@ variable "tf_region" {
 
 variable "tf_access_key" {
   type    = string
-  default = "" #here
+  default = "AKIAVIOZFMHP63Y6B47"
 }
 
 variable "tf_secrete_key" {

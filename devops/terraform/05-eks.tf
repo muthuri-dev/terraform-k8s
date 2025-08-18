@@ -26,13 +26,16 @@ resource "aws_eks_cluster" "dev_eks_cluster" {
   name = "dev_eks_cluster"
 
   access_config {
-    authentication_mode = "API" #CONFIG_MAP , API, API_AND_CONFIG_MAP
+    authentication_mode                         = "API" #CONFIG_MAP , API, API_AND_CONFIG_MAP
+    bootstrap_cluster_creator_admin_permissions = true
   }
 
   role_arn = aws_iam_role.dev_role_cluster.arn
   version  = var.dev_eks_cluster_version
 
   vpc_config {
+    endpoint_private_access = true
+    endpoint_public_access  = true
     subnet_ids = [
       aws_subnet.dev_private_subnet[0].id,
       aws_subnet.dev_private_subnet[1].id,
