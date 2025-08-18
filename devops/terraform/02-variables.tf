@@ -10,12 +10,12 @@ variable "dev_profile" {
 
 variable "dev_access_key" {
   type    = string
-  default = "AKIAVIOZFNMHPDJDIOP5"
+  default = ""
 }
 
 variable "dev_secret_key" {
   type    = string
-  default = "oIq2jKqBT87xHU8HnwypcSG6QXyIGKHqPFFsCftr"
+  default = ""
 }
 
 
