@@ -57,7 +57,16 @@ resource "aws_eks_node_group" "dev_node_group" {
   ]
 }
 
+
+module "aws_ebs_csi_driver_iam" {
+  source  = "github.com/andreswebs/terraform-aws-eks-ebs-csi-driver//modules/iam"
+  cluster_oidc_provider = replace(aws_eks_cluster.dev_eks_cluster.identity[0].oidc[0].issuer, "https://", "")
+  k8s_namespace         = "kube-system"
+  iam_role_name         = "ebs-csi-controller-${aws_eks_cluster.dev_eks_cluster.name}"
+}
+
 resource "aws_eks_addon" "ebs_csi" {
-  cluster_name = aws_eks_cluster.dev_eks_cluster.name
-  addon_name   = "aws-ebs-csi-driver"
+  cluster_name             = aws_eks_cluster.dev_eks_cluster.name
+  addon_name              = "aws-ebs-csi-driver"
+  service_account_role_arn = module.aws_ebs_csi_driver_iam.role.arn
 }

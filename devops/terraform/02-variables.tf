@@ -1,6 +1,6 @@
 variable "dev_region" {
   type    = string
-  default = "eu-central-1"
+  default = "eu-west-3"
 }
 
 variable "dev_profile" {
@@ -10,7 +10,7 @@ variable "dev_profile" {
 
 variable "dev_access_key" {
   type    = string
-  default = ""#here
+  default = ""
 }
 
 variable "dev_secret_key" {

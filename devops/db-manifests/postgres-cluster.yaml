@@ -1,0 +1,21 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgresql-cluster
+  namespace: database
+spec:
+  instances: 3
+
+  storage:
+    size: 1Gi
+
+  managed:
+    roles:
+      # Make app user a superuser
+      - name: app
+        ensure: present
+        comment: "Application user with superuser privileges"
+        login: true
+        superuser: true # Grant full superuser privileges
+        inherit: true
+        connectionLimit: -1
